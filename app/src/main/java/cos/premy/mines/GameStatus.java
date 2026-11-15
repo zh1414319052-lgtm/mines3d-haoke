@@ -1,10 +1,9 @@
 package cos.premy.mines;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.SystemClock;
 
-import java.util.Date;
 import java.util.Vector;
 
 /**
@@ -12,8 +11,10 @@ import java.util.Vector;
  */
 
 public class GameStatus {
-    private final Date startTime;
-    private Date endTime = null;
+    public final ExplosionState explosion = new ExplosionState();
+    static final String SETTINGS = "cos.premy.mines.settings";
+    static final boolean DEFAULT_NUMBER_CLUES = true;
+    private final GameClock clock;
     private boolean gameOver;
     private boolean hasUserWon;
     private int level;
@@ -22,31 +23,32 @@ public class GameStatus {
     private final int numLevels;
     private final Vector<GameEndedListener> gameEndedListenerVector;
 
-    private SharedPreferences sharedPref;
+    private final SharedPreferences sharedPref;
 
-    public GameStatus(Activity activity){
-        startTime = new Date();
-        gameOver = false;
-        hasUserWon = false;
-        level = 0;
-        lastLevel = level;
+    public GameStatus(Context context, int numLevels, int level, long elapsed, int outcome) {
+        sharedPref = context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE);
+        this.numLevels = numLevels;
+        clock = new GameClock(elapsed);
+        gameOver = outcome != 0;
+        hasUserWon = outcome == 1;
+        this.level = Math.max(0, Math.min(numLevels - 1, level));
+        lastLevel = this.level;
         levelSwitchListenerVector = new Vector<>();
         gameEndedListenerVector = new Vector<>();
 
-        sharedPref = activity.getSharedPreferences("cos.premy.mines.settings", Context.MODE_PRIVATE);
-        this.numLevels = sharedPref.getInt("numLevels", 2);
+    }
+
+    public static int preferredLayers(Context context) {
+        return Math.max(2, Math.min(8, context.getSharedPreferences(SETTINGS, Context.MODE_PRIVATE)
+                .getInt("numLevels", 2)));
     }
 
     public int getNumLevels(){
         return numLevels;
     }
 
-    public boolean getHardcore(){
-        return sharedPref.getBoolean("hardcore", false);
-    }
-
     public boolean getNumberType(){
-        return sharedPref.getBoolean("numberType", false);
+        return sharedPref.getBoolean("numberType", DEFAULT_NUMBER_CLUES);
     }
 
     public boolean getColored(){
@@ -56,9 +58,10 @@ public class GameStatus {
     public boolean getFlood() { return sharedPref.getBoolean("flood", false); }
 
     public void endGame(boolean hasUserWon){
+        if (gameOver) return;
         gameOver = true;
         this.hasUserWon = hasUserWon;
-        endTime = new Date();
+        clock.pause(SystemClock.elapsedRealtime());
         for(GameEndedListener listener : gameEndedListenerVector){
             listener.gameEnded(this);
         }
@@ -83,21 +86,28 @@ public class GameStatus {
     public int getLevel(){
         return level;
     }
+    public void setLevel(int value){int target=Math.max(0,Math.min(numLevels-1,value));if(target==level)return;lastLevel=level;level=target;for(LevelSwitchListener l:levelSwitchListenerVector)l.levelSwitched(this);}
 
     public boolean stillPlaying() {
         return !gameOver;
     }
 
-    public Date getStartTime() {
-        return startTime;
+    public void resume() {
+        if (stillPlaying()) clock.resume(SystemClock.elapsedRealtime());
+        explosion.active(true);
     }
 
-    public Date getEndTime(){
-        return endTime;
+    public void pause() {
+        clock.pause(SystemClock.elapsedRealtime());
+        explosion.active(false);
     }
 
-    public void cleanListeners(){
-        levelSwitchListenerVector.clear();
+    public long elapsedMillis() {
+        return clock.elapsed(SystemClock.elapsedRealtime());
+    }
+
+    public int outcome() {
+        return gameOver ? (hasUserWon ? 1 : 2) : 0;
     }
 
     public boolean hasUserWon(){
@@ -115,4 +125,6 @@ public class GameStatus {
     public int getLastLevel() {
         return lastLevel;
     }
+    public boolean reduceEffects() { return sharedPref.getBoolean("reducedEffects",false); }
+    public void triggerExplosion(cos.premy.mines.data.MineCoord cell){explosion.trigger(cell);}
 }

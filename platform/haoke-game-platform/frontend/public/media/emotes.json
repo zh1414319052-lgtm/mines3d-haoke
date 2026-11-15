@@ -1,0 +1,306 @@
+{
+  "schema_version": 1,
+  "image": "/media/liquid-emotes.png",
+  "width": 1254,
+  "height": 1254,
+  "license": "user-supplied; no third-party redistribution license inferred",
+  "image_sha256": "b4ba05f183a6fc4a881c250ac22233ff6a20ed8d6d75b78e8853d694465a74a4",
+  "rendering": "Independent PNG assets are available through emotes[].asset. Existing inline-SVG consumers may continue using each original frame/viewBox and the unchanged atlas. Non-uniform frames preserve protruding water splashes.",
+  "emotes": [
+    {
+      "id": "hello",
+      "label": "你好",
+      "index": 0,
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "width": 338,
+        "height": 334
+      },
+      "viewBox": "0 0 338 334",
+      "asset": "/media/emotes/hello.png",
+      "description": "绿色液滴眯眼微笑，举手挥动打招呼。",
+      "content_offset": {
+        "x": 23,
+        "y": 25
+      }
+    },
+    {
+      "id": "ready",
+      "label": "准备好了",
+      "index": 1,
+      "frame": {
+        "x": 338,
+        "y": 0,
+        "width": 256,
+        "height": 334
+      },
+      "viewBox": "338 0 256 334",
+      "asset": "/media/emotes/ready.png",
+      "description": "绿色液滴握紧双手，头顶绿色对勾，表示准备好了。",
+      "content_offset": {
+        "x": 64,
+        "y": 25
+      }
+    },
+    {
+      "id": "roger",
+      "label": "收到",
+      "index": 2,
+      "frame": {
+        "x": 594,
+        "y": 0,
+        "width": 330,
+        "height": 334
+      },
+      "viewBox": "594 0 330 334",
+      "asset": "/media/emotes/roger.png",
+      "description": "绿色液滴抬手敬礼，表情认真，表示收到。",
+      "content_offset": {
+        "x": 27,
+        "y": 25
+      }
+    },
+    {
+      "id": "rally",
+      "label": "集合",
+      "index": 3,
+      "frame": {
+        "x": 924,
+        "y": 0,
+        "width": 330,
+        "height": 334
+      },
+      "viewBox": "924 0 330 334",
+      "asset": "/media/emotes/rally.png",
+      "description": "绿色液滴张开双手招呼伙伴，表示集合。",
+      "content_offset": {
+        "x": 27,
+        "y": 25
+      }
+    },
+    {
+      "id": "help",
+      "label": "我来帮忙",
+      "index": 4,
+      "frame": {
+        "x": 0,
+        "y": 334,
+        "width": 338,
+        "height": 316
+      },
+      "viewBox": "0 334 338 316",
+      "asset": "/media/emotes/help.png",
+      "description": "绿色液滴伸手拉住另一只小液滴，表示我来帮忙。",
+      "content_offset": {
+        "x": 23,
+        "y": 34
+      }
+    },
+    {
+      "id": "careful",
+      "label": "小心",
+      "index": 5,
+      "frame": {
+        "x": 338,
+        "y": 334,
+        "width": 256,
+        "height": 316
+      },
+      "viewBox": "338 334 256 316",
+      "asset": "/media/emotes/careful.png",
+      "description": "绿色液滴睁大眼睛，头顶橙色感叹号，提醒小心。",
+      "content_offset": {
+        "x": 64,
+        "y": 34
+      }
+    },
+    {
+      "id": "retreat",
+      "label": "撤退",
+      "index": 6,
+      "frame": {
+        "x": 594,
+        "y": 334,
+        "width": 330,
+        "height": 316
+      },
+      "viewBox": "594 334 330 316",
+      "asset": "/media/emotes/retreat.png",
+      "description": "绿色液滴快速向右奔跑，身后留下水花，表示撤退。",
+      "content_offset": {
+        "x": 27,
+        "y": 34
+      }
+    },
+    {
+      "id": "wait",
+      "label": "等一下",
+      "index": 7,
+      "frame": {
+        "x": 924,
+        "y": 334,
+        "width": 330,
+        "height": 316
+      },
+      "viewBox": "924 334 330 316",
+      "asset": "/media/emotes/wait.png",
+      "description": "绿色液滴举起手掌做暂停手势，表示等一下。",
+      "content_offset": {
+        "x": 27,
+        "y": 34
+      }
+    },
+    {
+      "id": "great",
+      "label": "干得漂亮",
+      "index": 8,
+      "frame": {
+        "x": 0,
+        "y": 650,
+        "width": 338,
+        "height": 278
+      },
+      "viewBox": "0 650 338 278",
+      "asset": "/media/emotes/great.png",
+      "description": "绿色液滴笑着竖起大拇指，旁边有金色星光，夸奖干得漂亮。",
+      "content_offset": {
+        "x": 23,
+        "y": 53
+      }
+    },
+    {
+      "id": "thanks",
+      "label": "谢谢",
+      "index": 9,
+      "frame": {
+        "x": 338,
+        "y": 650,
+        "width": 256,
+        "height": 278
+      },
+      "viewBox": "338 650 256 278",
+      "asset": "/media/emotes/thanks.png",
+      "description": "绿色液滴闭眼捧着一颗爱心，表达感谢。",
+      "content_offset": {
+        "x": 64,
+        "y": 53
+      }
+    },
+    {
+      "id": "sorry",
+      "label": "抱歉",
+      "index": 10,
+      "frame": {
+        "x": 594,
+        "y": 650,
+        "width": 330,
+        "height": 278
+      },
+      "viewBox": "594 650 330 278",
+      "asset": "/media/emotes/sorry.png",
+      "description": "绿色液滴低下身子、眉眼下垂，旁边有一滴蓝色水滴，表示抱歉。",
+      "content_offset": {
+        "x": 27,
+        "y": 53
+      }
+    },
+    {
+      "id": "phew",
+      "label": "好险",
+      "index": 11,
+      "frame": {
+        "x": 924,
+        "y": 650,
+        "width": 330,
+        "height": 278
+      },
+      "viewBox": "924 650 330 278",
+      "asset": "/media/emotes/phew.png",
+      "description": "绿色液滴抬手擦汗并呼气，表示好险。",
+      "content_offset": {
+        "x": 27,
+        "y": 53
+      }
+    },
+    {
+      "id": "haha",
+      "label": "哈哈",
+      "index": 12,
+      "frame": {
+        "x": 0,
+        "y": 928,
+        "width": 338,
+        "height": 326
+      },
+      "viewBox": "0 928 338 326",
+      "asset": "/media/emotes/haha.png",
+      "description": "绿色液滴张嘴大笑，眼角溅出泪花。",
+      "content_offset": {
+        "x": 23,
+        "y": 29
+      }
+    },
+    {
+      "id": "wow",
+      "label": "震惊",
+      "index": 13,
+      "frame": {
+        "x": 338,
+        "y": 928,
+        "width": 256,
+        "height": 326
+      },
+      "viewBox": "338 928 256 326",
+      "asset": "/media/emotes/wow.png",
+      "description": "绿色液滴瞪大眼睛、张开嘴巴并抬起双手，表示震惊。",
+      "content_offset": {
+        "x": 64,
+        "y": 29
+      }
+    },
+    {
+      "id": "gg",
+      "label": "打得好",
+      "index": 14,
+      "frame": {
+        "x": 594,
+        "y": 928,
+        "width": 330,
+        "height": 326
+      },
+      "viewBox": "594 928 330 326",
+      "asset": "/media/emotes/gg.png",
+      "description": "绿色液滴微笑着鼓掌，夸奖打得好。",
+      "content_offset": {
+        "x": 27,
+        "y": 29
+      }
+    },
+    {
+      "id": "again",
+      "label": "再来一局",
+      "index": 15,
+      "frame": {
+        "x": 924,
+        "y": 928,
+        "width": 330,
+        "height": 326
+      },
+      "viewBox": "924 928 330 326",
+      "asset": "/media/emotes/again.png",
+      "description": "绿色液滴开心举手，旁边有绿色循环箭头，邀请再来一局。",
+      "content_offset": {
+        "x": 27,
+        "y": 29
+      }
+    }
+  ],
+  "asset_canvas": {
+    "width": 384,
+    "height": 384,
+    "format": "PNG",
+    "mode": "RGBA",
+    "padding": "Source frame centered without resampling; minimum added margin 23px."
+  }
+}

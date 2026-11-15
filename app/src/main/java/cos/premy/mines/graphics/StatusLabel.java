@@ -5,103 +5,50 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+import java.util.Locale;
+
 import cos.premy.mines.GameStatus;
 import cos.premy.mines.R;
 import cos.premy.mines.data.MinesContainer;
 
-/**
- * Created by premy on 09.11.2017.
- */
+final class StatusLabel {
+    private final MinesContainer board;
+    private final GameStatus game;
+    private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final String time, flags, layer;
+    private int x, y, lineHeight;
+    private long shownSeconds = -1;
+    private String timeText;
 
-public class StatusLabel extends AbstractDrawable {
-    private int fontSize = 30;
-    private final MinesContainer minesContainer;
-
-    private final Paint paint;
-    private final Context context;
-
-    public StatusLabel(Context context, MinesContainer minesContainer, GameStatus status){
-        super(status);
-        this.minesContainer = minesContainer;
-        this.context = context;
-
-        paint = new Paint();
+    StatusLabel(Context context, MinesContainer board, GameStatus game) {
+        this.board = board;
+        this.game = game;
+        time = context.getString(R.string.time);
+        flags = context.getString(R.string.mines_blocked);
+        layer = context.getString(R.string.level);
         paint.setColor(Color.WHITE);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setTextSize(fontSize);
     }
 
-    @Override
-    public void draw(Canvas canvas) {
-        StringBuilder builder = new StringBuilder();
-
-        builder.append(context.getString(R.string.time));
-	builder.append(" ");
-        long delta = System.currentTimeMillis() - gameStatus.getStartTime().getTime();
-        double reducedDelta = delta;
-        reducedDelta /= 1000;
-        builder.append(reducedDelta);
-
-        String toWrite = builder.toString();
-        canvas.drawText(toWrite, x, y, paint);
-
-        builder = new StringBuilder();
-        builder.append(context.getString(R.string.mines_blocked));
-	builder.append(" ");
-        builder.append(minesContainer.getMinesBlocked());
-        builder.append("/");
-        builder.append(minesContainer.getMinesNumber());
-
-        toWrite = builder.toString();
-        canvas.drawText(toWrite, x, y + fontSize, paint);
-
-        builder = new StringBuilder();
-        builder.append(context.getString(R.string.level));
-        builder.append(" ");
-        builder.append(gameStatus.getLevel() + 1);
-        builder.append("/");
-        builder.append(gameStatus.getNumLevels());
-
-        toWrite = builder.toString();
-        canvas.drawText(toWrite, x, y + fontSize*2, paint);
-
+    void setPosition(int x, int y, int lineHeight, float textSize) {
+        this.x = x;
+        this.y = y;
+        this.lineHeight = lineHeight;
+        paint.setTextSize(textSize);
     }
 
-    @Override
-    public void setPosition(int x, int width, int y, int height) {
-        super.setPosition(x, width, y, height);
-
-        this.fontSize = height;
-        paint.setTextSize(fontSize);
-    }
-
-    @Override
-    public void sendTap(int x, int y) {
-
-    }
-
-    @Override
-    public void sendLongTap(int x, int y) {
-
-    }
-
-    @Override
-    public void sendDoubleTap(int x, int y) {
-
-    }
-
-    @Override
-    protected void sendVerifiedTap(int x, int y) {
-
-    }
-
-    @Override
-    protected void sendVerifiedLongTap(int x, int y) {
-
-    }
-
-    @Override
-    protected void sendVerifiedDoubleTap(int x, int y) {
-
+    void draw(Canvas canvas) {
+        long seconds = game.elapsedMillis() / 1000;
+        if (shownSeconds != seconds) {
+            shownSeconds = seconds;
+            timeText = time + " " + (seconds >= 3600
+                    ? String.format(Locale.ROOT, "%d:%02d:%02d", seconds / 3600, seconds / 60 % 60, seconds % 60)
+                    : String.format(Locale.ROOT, "%02d:%02d", seconds / 60, seconds % 60));
+        }
+        float baseline = y - paint.ascent();
+        canvas.drawText(timeText, x, baseline, paint);
+        canvas.drawText(flags + " " + board.getMinesBlocked() + "/" + board.getMinesNumber(),
+                x, baseline + lineHeight, paint);
+        canvas.drawText(layer + " " + (game.getLevel() + 1) + "/" + game.getNumLevels(),
+                x, baseline + lineHeight * 2, paint);
     }
 }

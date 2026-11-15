@@ -1,0 +1,276 @@
+{
+  "phase": 1,
+  "status": "Complete; awaiting user approval before phase 2",
+  "video": {
+    "path": "D:\\浩科软件优化\\三维扫雷_Mines3D\\三维扫雷_矿井爆炸_第一阶段样片.mp4",
+    "bytes": 13952080,
+    "sha256": "CC999A45506893C61BB37B7CE5D521D23D29CAEFAA0621A6D49DF663215204C2"
+  },
+  "source_files": [
+    {
+      "path": "audio\\ambience_loop.wav",
+      "bytes": 6912044,
+      "sha256": "b825d5244047804cb577a68aa24231ddc864ffdeb5ba8551b5dcd9a511c88ba1"
+    },
+    {
+      "path": "audio\\blast_cavern.wav",
+      "bytes": 1382444,
+      "sha256": "55ccf3df7ab196fcdf3d0a221e9c0ddb1d9f48a99896b1021bd3d70899417dd3"
+    },
+    {
+      "path": "audio\\blast_debris.wav",
+      "bytes": 950444,
+      "sha256": "dc53164fed61d4402ae55ac4a92421b58712102b90da2cd2436362321fe716e0"
+    },
+    {
+      "path": "audio\\blast_impact.wav",
+      "bytes": 201644,
+      "sha256": "733417d4853bc28cd2ad4bf9493af396e5205aa129c84eafdf98c1e501e3258f"
+    },
+    {
+      "path": "audio\\blast_low.wav",
+      "bytes": 633644,
+      "sha256": "5830b7c73241bddbc4832e9a19f56576004104004db471b344a4f4af11dddddf"
+    },
+    {
+      "path": "audio\\flag.wav",
+      "bytes": 109484,
+      "sha256": "d7d3e28f20bc0c4c2c516f04b942235f4b8d72abaa245ba8bbec4ce2ebb5f391"
+    },
+    {
+      "path": "audio\\layer.wav",
+      "bytes": 207404,
+      "sha256": "caebf214f1a0f0966f964e84af0482357af7612ccca7b542ffda3429a632ba9c"
+    },
+    {
+      "path": "audio\\mix_master.wav",
+      "bytes": 6912044,
+      "sha256": "ff1fbe6b16d47d575eba21d4d8a51452f86166b413d185e0ce1186c74dcec2b3"
+    },
+    {
+      "path": "audio\\open.wav",
+      "bytes": 92204,
+      "sha256": "846e6d1c2ac6f1cbfd677e3227545368c6aba71226bf2a04d252ca33d7b345a8"
+    },
+    {
+      "path": "audio\\select.wav",
+      "bytes": 37484,
+      "sha256": "855f1a244e08923cd39b04ad563a3f6b69da2e094911e02ed63fcba4e183db98"
+    },
+    {
+      "path": "audio\\stems\\ambience.wav",
+      "bytes": 6912044,
+      "sha256": "044e5d7083a872449e5d8afee422fc8555a7540a28bc37f7fc41d30457c8becc"
+    },
+    {
+      "path": "audio\\stems\\cavern.wav",
+      "bytes": 6912044,
+      "sha256": "f5ca0c6c988b090a5f0e3ccac515fa63d5e0b674d1b6a63c37c198dfeb225fb0"
+    },
+    {
+      "path": "audio\\stems\\debris.wav",
+      "bytes": 6912044,
+      "sha256": "8ed31f1cb118a2eeca3d0306448424d1b378ee4a41d19e508a348fecb1b7cdb1"
+    },
+    {
+      "path": "audio\\stems\\impact.wav",
+      "bytes": 6912044,
+      "sha256": "171fa7c2de5d1692dd748861bf7c21d0492519b564acd84da7de7d68739fad21"
+    },
+    {
+      "path": "audio\\stems\\interaction.wav",
+      "bytes": 6912044,
+      "sha256": "db8502443e87fb939db2ef3d7f70f68cf19028cd6041086c00b69744b6c593f6"
+    },
+    {
+      "path": "audio\\stems\\low.wav",
+      "bytes": 6912044,
+      "sha256": "87534bc976c158d8389dc077c2197a17f9a202789a4814b8d43fe8bdd034b2ed"
+    },
+    {
+      "path": "fonts\\NotoSans-Bold.ttf",
+      "bytes": 838072,
+      "sha256": "3a08a47daa00cade516425c15c57615aef2fd418ec9811a7b9f465088f92cc05"
+    },
+    {
+      "path": "fonts\\NotoSans-OFL.txt",
+      "bytes": 4377,
+      "sha256": "0dab92d0544f7b233403f14b84a663bdbfa746982eda629e7f4f9ffe1b036feb"
+    },
+    {
+      "path": "fonts\\NotoSansSC-OFL.txt",
+      "bytes": 4301,
+      "sha256": "6a73f9541c2de74158c0e7cf6b0a58ef774f5a780bf191f2d7ec9cc53efe2bf2"
+    },
+    {
+      "path": "fonts\\NotoSansSC-VF.ttf",
+      "bytes": 17773244,
+      "sha256": "763146584cf0710223441356b4395e279021b0806c196614377a7a0174ae074a"
+    },
+    {
+      "path": "fragment_trajectories.json",
+      "bytes": 1065682,
+      "sha256": "da01dff7796bf110d998db30ce1695c6ba360ef70810968c75f7caf64c9fa9c3"
+    },
+    {
+      "path": "graphics\\ui_blast.png",
+      "bytes": 39673,
+      "sha256": "cfe5815912c45aed0e257ebf2a742e0b677dfdf3e0792d48883ffb2e79d24c79"
+    },
+    {
+      "path": "graphics\\ui_flagged.png",
+      "bytes": 35387,
+      "sha256": "9e06375521f6b910099f572a4871873244697d02f347fe4a8d1744195316cc9c"
+    },
+    {
+      "path": "graphics\\ui_idle.png",
+      "bytes": 31597,
+      "sha256": "d16827c7ce7c74856d5b5424646bdfa91da65c200e0fd4f9e00fb8615f87dc26"
+    },
+    {
+      "path": "graphics\\ui_opened.png",
+      "bytes": 33298,
+      "sha256": "5b624fbd6ad656cfd5e4968e4dcf0ec379376bda02b2411c98d21f3ed7f707b4"
+    },
+    {
+      "path": "graphics\\ui_overview.png",
+      "bytes": 30080,
+      "sha256": "37b123ced712826f6dca01a7bf88812759d7b3bc4a376e3434e581bacd516ffa"
+    },
+    {
+      "path": "graphics\\ui_play.png",
+      "bytes": 33413,
+      "sha256": "7745c8c3c0d50bb557b6265450196ad3e4517f733515f3ce0f1ffbf77bed8d7b"
+    },
+    {
+      "path": "Mines3D_DeepSector.blend",
+      "bytes": 12326288,
+      "sha256": "b737d4d51575cac1d04cf6a23dab3299e347ceba2050165924906e5969537971"
+    },
+    {
+      "path": "PHASE_2_HANDOFF.md",
+      "bytes": 3768,
+      "sha256": "aea60e0f37348fe2c7ff02d7545f0cf4f0820cfd8c8e6385c659fe36d2fea2fb"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7169,
+      "sha256": "606a02f21c295a5a4b887b323c893585ed643c51eeb7a1b38911567ee7e9bd74"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 42,
+      "sha256": "8c4800a6835b06b282a3bdb72cc95c5bea6d5a9f1f010059731c8d5f714967fe"
+    },
+    {
+      "path": "scene_contract.json",
+      "bytes": 1647,
+      "sha256": "5d3be08b060be3b298308eddb1cb63a7998a17831022b342f21cb0c3856f9599"
+    },
+    {
+      "path": "scripts\\build_scene.py",
+      "bytes": 25953,
+      "sha256": "88df171d1a3d7d202156c6bacac84f7b26b9fbd5020e16c62a88537473b0841a"
+    },
+    {
+      "path": "scripts\\compose_movie.py",
+      "bytes": 4171,
+      "sha256": "87c718bef900866ace76b86794bd5e753357a82c222ee424e23f945a6642336f"
+    },
+    {
+      "path": "scripts\\finalize_when_rendered.py",
+      "bytes": 4689,
+      "sha256": "b3eaf6d12b269281163f629f09441ab56f3c344ebfc5cb5a0e7856abac7ea058"
+    },
+    {
+      "path": "scripts\\index_unchanged_prefix.py",
+      "bytes": 988,
+      "sha256": "2ce75b33d9f8477c409ed2f70e0c1bc261c0ec649775907effd26a894e829eb8"
+    },
+    {
+      "path": "scripts\\make_sources.py",
+      "bytes": 10326,
+      "sha256": "ab660113d7dd1b8dcc3732722a11249ad54ffd2a65af47786f1a84dcfbdaf84d"
+    },
+    {
+      "path": "scripts\\probe_blender.py",
+      "bytes": 711,
+      "sha256": "9b3850cd8fbd7f1527ad155e378fbd57b5e99ae27a79e39a9fcc80355fed058e"
+    },
+    {
+      "path": "scripts\\refine_selection.py",
+      "bytes": 1119,
+      "sha256": "602621b0889b3bc2932602e93b521e083649af3e367f463f6d60d33135c38a6f"
+    },
+    {
+      "path": "scripts\\refresh_packed_audio.py",
+      "bytes": 850,
+      "sha256": "1a851a794b67592e2c8b1172e7ad89bc0cdf7b9a2493bef2c036b3c6ec247f13"
+    },
+    {
+      "path": "scripts\\render_frames.py",
+      "bytes": 1616,
+      "sha256": "215ede9189ea49dd82cc702e8734acc6172c7ec9dcb1fa189bd03459e50a2e13"
+    },
+    {
+      "path": "scripts\\render_movie.py",
+      "bytes": 4325,
+      "sha256": "16bd22f5b73f711c4caf8d2aafee7cffcbfa5042d879b06be568e2ba45ee0984"
+    },
+    {
+      "path": "scripts\\seal_render_cache.py",
+      "bytes": 1191,
+      "sha256": "ac730c072f5e4b6128c5d5cdf1057f7cc273eb678c705c434080c071697aa1d7"
+    },
+    {
+      "path": "scripts\\verify_audio.py",
+      "bytes": 1754,
+      "sha256": "d4a5ca01b5e0dd1f716c13acf7af2ef9cdc5ae923d9205c27036a18677fc67a5"
+    },
+    {
+      "path": "scripts\\verify_encoded_audio.py",
+      "bytes": 3214,
+      "sha256": "6977db688441bf315ed791ce29d3f34fb9675528a2289f10bc9f1aefa1a704d7"
+    },
+    {
+      "path": "scripts\\verify_scene.py",
+      "bytes": 3405,
+      "sha256": "c72861f3f392eb888248a276939806e741949651b63ed0a893aa50c2a7cfc722"
+    },
+    {
+      "path": "textures\\rock_basecolor.png",
+      "bytes": 936797,
+      "sha256": "624dc5c1cebbe562b886ceb3383401c3398186b1855cd5a3b7bd2d48da59ca53"
+    },
+    {
+      "path": "textures\\rock_height.png",
+      "bytes": 1787790,
+      "sha256": "d6764edcd5ddb279241f3c0826f51c8b7d21c4cbffc89f2b29bd1607930600e8"
+    },
+    {
+      "path": "textures\\rock_normal.png",
+      "bytes": 1930025,
+      "sha256": "4f339f71fcb7ec59072bef42689799c899cfc0f10575dd1f9fda9770f3aa8350"
+    },
+    {
+      "path": "textures\\rock_roughness.png",
+      "bytes": 347199,
+      "sha256": "685359bf15bb5dccb04defff5d7def0d7e817c0a7a4e0d349063ed4186f399c8"
+    },
+    {
+      "path": "textures\\steel_basecolor.png",
+      "bytes": 475524,
+      "sha256": "70b443d699caee136cbb89596def0c966097e46886df66ce505204ce49dc3e42"
+    },
+    {
+      "path": "textures\\steel_roughness.png",
+      "bytes": 442969,
+      "sha256": "22de9380c5bbdd447587346aa404571c70687fb6502ae80e272add207b9e4940"
+    },
+    {
+      "path": "timeline.json",
+      "bytes": 931,
+      "sha256": "a434748dff94b87740343875b31b193c47fb3a961e91763cd9a2ff78017e0c75"
+    }
+  ]
+}

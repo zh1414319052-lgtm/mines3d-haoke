@@ -1,12 +1,15 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">#0b131c</item>
+        <item name="android:textColorPrimary">#e8f0ee</item>
+        <item name="android:textColorSecondary">#9aafbd</item>
         <!-- Since targetSdk 35 the system bars are transparent and SystemBarsPadding paints the
              strip behind them black. The navigation bar colour still tints the scrim of the
              three-button navigation, so keep it black as well. -->

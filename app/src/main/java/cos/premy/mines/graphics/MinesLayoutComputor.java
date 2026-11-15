@@ -1,139 +1,35 @@
 package cos.premy.mines.graphics;
 
-import static java.lang.Math.*;
+/** Fits a square board and keeps the status and layer controls outside the playable area. */
+final class MinesLayoutComputor {
+    final boolean landscape;
+    final int gridX, gridY, gridSize;
+    final int buttonX, buttonY, buttonWidth, buttonHeight;
+    final int statusX, statusY;
 
-/**
- * Created by premy on 07.11.2017.
- */
-
-class MinesLayoutComputor {
-    MinesLayoutComputor(int height, int width){
-        this.height = height;
-        this.width = width;
-    }
-
-    final int height;
-    final int width;
-
-    static final int MARGIN_TOP = 40;
-    static final int MARGIN_BOTTOM = 20;
-    static final int MARGIN_LEFT = 20;
-    static final int MARGIN_RIGHT = 20;
-
-    static final int BUTTON_MARGIN_RIGHT = 30;
-    static final int BUTTON_MARGIN_BOTTOM = 30;
-
-
-    private int buttonWidth = -1;
-    int getButtonWidth(){
-        if(buttonWidth != -1){
-            return buttonWidth;
-        }
-
-        if(width > height){
-            buttonWidth = (width - MARGIN_LEFT - MARGIN_RIGHT) /7;
-        }
-        else {
-            buttonWidth = width - MARGIN_LEFT - MARGIN_RIGHT;
-        }
-        return getButtonWidth();
-    }
-
-    private int buttonHeight = -1;
-    int getButtonHeight(){
-        if(buttonHeight != -1){
-            return buttonHeight;
-        }
-
-        if(width > height){
-            buttonHeight = height - MARGIN_TOP - MARGIN_BOTTOM;
-        }
-        else {
-            buttonHeight = (height - MARGIN_TOP - MARGIN_BOTTOM)/7;
-        }
-        return getButtonHeight();
-    }
-
-    private int gridSize = -1;
-    int getGridWidth(){
-        if(gridSize != -1){
-            return gridSize;
-        }
-        gridSize = min(width - (MARGIN_RIGHT + MARGIN_LEFT), height - (MARGIN_TOP + MARGIN_BOTTOM));
-        return getGridWidth();
-    }
-
-    int getGridHeight(){
-        return getGridWidth();
-    }
-
-    private int buttonX = -1;
-    int getButtonX(){
-        if(buttonX != -1){
-            return buttonX;
-        }
-        getGridWidth();
-
-        if(width > height){
-            buttonX = (width - gridSize - getButtonWidth() - MARGIN_LEFT - MARGIN_RIGHT - BUTTON_MARGIN_RIGHT)/2;
-        } else{
-            buttonX = MARGIN_LEFT;
-        }
-        return getButtonX();
-    }
-
-    private int buttonY = -1;
-    int getButtonY(){
-        if(buttonY != -1){
-            return buttonY;
-        }
-        getGridWidth();
-
-        if(width > height){
-            buttonY = MARGIN_TOP;
-        } else{
-            buttonY = (height - gridSize - getButtonHeight() - MARGIN_TOP - MARGIN_BOTTOM - BUTTON_MARGIN_BOTTOM)/2;
-        }
-        return getButtonY();
-    }
-
-    private int gridX = -1;
-    int getGridX(){
-        if(gridX != -1){
-            return gridX;
-        }
-        if(width > height) {
-            gridX = getButtonX() + getButtonWidth() + BUTTON_MARGIN_RIGHT;
-        }
-        else {
-            gridX = getButtonX();
-        }
-        return getGridX();
-    }
-
-    private int gridY = -1;
-    int getGridY(){
-        if(gridY != -1){
-            return gridY;
-        }
-        if(width > height) {
-            gridY = getButtonY();
+    MinesLayoutComputor(int width, int height, int gap, int minControlSize, int textHeight) {
+        landscape = width > height;
+        int statusHeight = textHeight * 3;
+        if (landscape) {
+            int rail = Math.min(width / 3, Math.max(minControlSize * 3, textHeight * 8));
+            gridSize = Math.max(0, Math.min(width - rail - gap * 3, height - gap * 2));
+            int left = Math.max(gap, (width - rail - gap - gridSize) / 2);
+            statusX = buttonX = left;
+            buttonWidth = rail;
+            buttonHeight = Math.max(0, Math.min(minControlSize * 2, height - statusHeight - 3 * gap));
+            statusY = Math.max(gap, (height - statusHeight - gap - buttonHeight) / 2);
+            buttonY = statusY + statusHeight + gap;
+            gridX = left + rail + gap;
+            gridY = (height - gridSize) / 2;
         } else {
-            gridY = getButtonY() + getButtonHeight() + BUTTON_MARGIN_BOTTOM;
+            buttonHeight = Math.max(0, Math.min(minControlSize, height / 4));
+            gridSize = Math.max(0, Math.min(width - gap * 2,
+                    height - statusHeight - buttonHeight - gap * 4));
+            buttonWidth = gridSize;
+            statusX = buttonX = gridX = (width - gridSize) / 2;
+            statusY = Math.max(gap, (height - statusHeight - buttonHeight - gridSize - gap * 2) / 2);
+            buttonY = statusY + statusHeight + gap;
+            gridY = buttonY + buttonHeight + gap;
         }
-        return getGridY();
     }
-
-    int getStatusLabelX(){
-        return MARGIN_LEFT;
-    }
-
-    int getStatusLabelY(){
-        return MARGIN_TOP;
-    }
-
-    int getStatusHeight() {
-        return (min(width, height) * 30) / 1100;
-    }
-
 }

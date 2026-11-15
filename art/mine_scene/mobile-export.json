@@ -1,0 +1,27 @@
+{
+  "source_sha256": "b737d4d51575cac1d04cf6a23dab3299e347ceba2050165924906e5969537971",
+  "export_sha256": "bb9de66dfe8cd5ccc6fd104d68120cba56fe0d5f757435a6e17f746d4632d6a6",
+  "format": "M3D2 / position normal linearRGB material",
+  "axis": "Android (x,y,z) = Blender (x,z,-y)",
+  "triangles": {
+    "environment": 21084,
+    "support": 4416,
+    "closed": 1596,
+    "opened": 376,
+    "closed_lod": 460,
+    "opened_lod": 88,
+    "flag": 380,
+    "damaged": 1688,
+    "fragment0": 20,
+    "fragment16": 80,
+    "fragment25": 80,
+    "ignition": 80,
+    "digit1": 25,
+    "digit2": 86,
+    "digit3": 134,
+    "digit4": 40,
+    "digit5": 85,
+    "digit6": 157
+  },
+  "material_note": "Same source geometry and original maps; GLES2 directional/point lighting replaces Cycles. No offline framebuffer in the playable scene."
+}

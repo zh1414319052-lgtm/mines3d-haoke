@@ -1,0 +1,5 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <application android:networkSecurityConfig="@xml/qa_network_security" />
+    <instrumentation android:name="cos.premy.mines.graphics.DeviceChecks" android:targetPackage="cos.premy.mines.qa" android:label="Mines3D local QA checks" />
+    <instrumentation android:name="cos.premy.mines.graphics.OnlineChecks" android:targetPackage="cos.premy.mines.qa" android:label="Mines3D isolated online QA" />
+</manifest>

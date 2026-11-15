@@ -1,0 +1,15 @@
+# Build and signing
+
+Android: JDK 21, Android SDK 36, Gradle wrapper 8.13 and Android Gradle Plugin 8.13.2. Set `JAVA_HOME` and `ANDROID_HOME`, then run `gradlew assembleRelease`. The release APK is unsigned until signed with the owner's external keystore. `assembleDebug` creates a separate QA package and can use a developer's own debug key. Windows tools can require an ASCII drive mapping for a source directory containing Chinese characters.
+
+Stable identity: `cos.premy.mines.haoke`, version `1.7.1-haoke.1`, build 20. Namespace remains `cos.premy.mines`. QA and upstream installations are separate; no private data is automatically migrated. Log in with the existing platform account. The formal binary uses https://cleanbizai.com and protocol 1, with no debug server override.
+
+`scripts/sign_release.py` signs this version using the established product keystore under `%LOCALAPPDATA%/Haoke/AndroidSigning/mines3d-release/`. `--create` was explicitly authorized for the first identity on 2026-11-15 and must never be used to replace it. Passwords are read only in memory from the existing Windows DPAPI-protected reference. The public certificate is in this folder; the private key and credential stores are never distributed. Future signing must retain the exact certificate. No backup was created because the owner requires separate permission before backup.
+
+Native updater: maintained Java implementation adapted from the Haoke Liquid Wars/WPGen module, GPL-3.0-or-later, used under GPL v3 in this GPL-3.0-only distribution. EdDSA 0.3.0 is obtained from Maven Central; its source and licence are available with the same coordinates and the project's upstream https://github.com/str4d/ed25519-java. Android support libraries remain at 28.0.0; complete dependency versions are declared in Gradle. No proprietary runtime dependency was added.
+
+The notification key is the existing platform key `haoke-updates-000ef7a45a5a58d5`; only its public pin is in the client. Product ID: `491ec4cb67f1146b`. Stable feed: https://www.haoke.org/api/client-updates/v1/cos.premy.mines.haoke/stable . Checks are foreground-only on the main menu or manual in Settings, and no check UI is attached to a game or online lobby.
+
+Assets: editable Blender scene, texture inputs, mesh/animation export recipes, original audio tracks/scripts and the new icon master are under `art/`. Runtime exports stay under `app/src/main/assets/`. Noto Sans / Noto Sans SC fonts retain SIL OFL 1.1. The retained stage-one sample is an artistic reference, not a runtime recording.
+
+The matching platform source is under `platform/haoke-game-platform` in the published source. It uses Python/FastAPI/SQLite and React/Vite. Run `npm ci` and `npm run build` in its frontend; install its `requirements.txt` for the backend. Configure your own documented environment and accounts; production `.env`, user database, signing identities and credentials are intentionally absent. Preserve existing production data during deployment. Run one backend worker because room coordination is process-local. Backend migration 7 adds Mines3D tables idempotently.

@@ -1,0 +1,49 @@
+{
+  "source": "Original procedural synthesis; no third-party samples",
+  "license": "GPL-3.0-only; commercial use permitted under project license",
+  "sample_rate": 48000,
+  "cues": [
+    {
+      "name": "start",
+      "duration": 1.1,
+      "peak": 0.3810131647738796,
+      "design": "lift relay + motor + paired bell",
+      "sha256": "868a10ae4a01c6927083b53379521a8c3b43fd4c5e6e95a9a8cf935424743924"
+    },
+    {
+      "name": "turn",
+      "duration": 0.38,
+      "peak": 0.20683185355569067,
+      "design": "tick + high chime",
+      "sha256": "a361cd53b6312febcc8ffdb8f69fd044adcbc7bc848af5773958366b35f9cf11"
+    },
+    {
+      "name": "rescue",
+      "duration": 1.0,
+      "peak": 0.29389284362366774,
+      "design": "continuous cable winch + ratchet + single release chord",
+      "sha256": "8ef997c75170dbc4e5f1f67716b7cf5f9ae14098341e03e008323bf78e8b35ff"
+    },
+    {
+      "name": "eliminated",
+      "duration": 0.7,
+      "peak": 0.298870613061326,
+      "design": "descending detuned warning",
+      "sha256": "397069a619d1ca6046e207ada40006ad7b1132a0ee93dbe77636eb74deef9716"
+    },
+    {
+      "name": "win",
+      "duration": 1.4,
+      "peak": 0.3235113250435817,
+      "design": "exit arpeggio",
+      "sha256": "d16f87acc6e5e4b66fd29592bd61288fbfd2d0796565418fa76280e145132997"
+    },
+    {
+      "name": "lose",
+      "duration": 1.3,
+      "peak": 0.2389515732598104,
+      "design": "low descending cadence",
+      "sha256": "3360ee550e8c95127de57cb45e17fb1c8b039bcae95f2f43e63e8e8f720721e4"
+    }
+  ]
+}

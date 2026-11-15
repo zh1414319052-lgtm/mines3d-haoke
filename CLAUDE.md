@@ -1,12 +1,15 @@
 # Mines3D
 
-Minesweeper on an n×m×2 grid for Android. Plain Java, `com.android.support` 28 libraries (no AndroidX),
-minSdk 19, targetSdk 36. The architecture is described in `README.md` ("Code description"): game state
-lives in the static `LoadedGame`, `MinesView` draws everything on a `Canvas` and the activities are thin.
+Minesweeper on an n×m×(2–8) grid for Android. Plain Java, com.android.support 28 libraries, OpenGL ES 2,
+minSdk 19, targetSdk 36. See README.md and art/mine_scene/PHASE_2_HANDOFF.md.
+Each GameActivity owns LoadedGame; BoardDefinition/BoardMoves share the six-neighbor rules
+across all six modes. BoardViewport renders exported Blender meshes and picks their actual
+triangles. FlatBoardViewport is the compatibility path. Bundle and SessionStore preserve
+the game, camera, hints/scans and one-shot explosion phase. Legacy MinesView is not the main UI.
 
 ## Build and test
-- There is no `local.properties`; export `ANDROID_HOME` (the SDK with `platforms;android-36`) before
-  running Gradle.
+- `local.properties` is machine-specific and excluded from the source archive; export
+  `ANDROID_HOME` (the SDK with `platforms;android-36`) on a new machine before running Gradle.
 - `./gradlew build` compiles, lints (report in `app/build/reports/`) and runs the JVM unit tests;
   `./gradlew testDebugUnitTest` runs the tests alone.
 - Unit tests live in `app/src/test/java` and run against the stub `android.jar` with

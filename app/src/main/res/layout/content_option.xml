@@ -43,7 +43,6 @@
                     android:id="@+id/color"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ToggleButton"
                     android:textOff="@string/black_and_white"
                     android:textOn="@string/colors" />
 
@@ -51,7 +50,6 @@
                     android:id="@+id/numberType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ToggleButton"
                     android:textOff="@string/number_type_line"
                     android:textOn="@string/number_type_number" />
 
@@ -59,7 +57,6 @@
                     android:id="@+id/flood"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ToggleButton"
                     android:textOff="@string/flood_manual"
                     android:textOn="@string/flood_auto" />
 
@@ -67,7 +64,7 @@
                     android:id="@+id/labelNumLevels"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/number_levels" />
+                    tools:text="Board layers: 2 (2–8)" />
 
                 <SeekBar
                     android:id="@+id/numLevels"

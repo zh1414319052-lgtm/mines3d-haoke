@@ -1,168 +1,114 @@
 package cos.premy.mines.graphics;
 
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.support.annotation.Nullable;
-import android.util.AttributeSet;
+import android.os.SystemClock;
+import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
-import java.util.Vector;
-
-import cos.premy.mines.GameEndedListener;
-import cos.premy.mines.GameStatus;
 import cos.premy.mines.LoadedGame;
-import cos.premy.mines.R;
-import cos.premy.mines.ReviewReminder;
-import cos.premy.mines.Utils;
-import cos.premy.mines.data.MinesContainer;
-import cos.premy.mines.generator.RandomMinesGenerator;
-
-/**
- * Created by premy on 07.11.2017.
- */
 
 public class MinesView extends View {
-    private final Vector<IDrawable> drawable;
-
+    private final LoadedGame game;
     private final Grid grid;
     private final SwitchButton switchButton;
-    private final GestureDetector detector;
-
-    private final GameStatus gameStatus;
-    private final MinesContainer minesContainer;
     private final StatusLabel statusLabel;
+    private final GestureDetector detector;
+    private boolean active;
+    private long animateUntil;
+    private final Runnable refresh = this::invalidate;
 
-    private Runnable refreshRunnable;
-    private android.os.Handler handler;
+    public MinesView(Context context, LoadedGame game) {
+        super(context);
+        this.game = game;
+        grid = new Grid(game.board, game.status);
+        switchButton = new SwitchButton(context, game.status);
+        statusLabel = new StatusLabel(context, game.board, game.status);
 
-    public MinesView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-        gameStatus = LoadedGame.gameStatus;
-        gameStatus.cleanListeners();
-        gameStatus.addGameEndedListener(new GameEndedListener() {
+        detector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
             @Override
-            public void gameEnded(GameStatus status) {
-                doFinalize();
-
-                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(LoadedGame.mainActivity);
-                StringBuilder message = new StringBuilder();
-                if(status.hasUserWon()){
-                    message.append(getResources().getString(R.string.you_have_won));
-                    ReviewReminder.setReadyForReview(LoadedGame.mainActivity);
-                } else {
-                    message.append(getResources().getString(R.string.you_have_lost));
-                }
-                message.append(getResources().getString(R.string.game_ended_stats, minesContainer.getOkBlockedMines(),
-                        minesContainer.getMinesBlocked(), minesContainer.getMinesOpened(), minesContainer.getMinesNumber()));
-
-                double diff = (double)status.getEndTime().getTime() - status.getStartTime().getTime();
-                diff = diff/1000;
-                message.append(getResources().getString(R.string.game_time, diff));
-
-                Activity activity = (Activity)getContext();
-                String preferenceName = String.format("cos.premy.mines.%d.%d.%d.%d",
-                        minesContainer.getHeight(),
-                        minesContainer.getWidth(),
-                        gameStatus.getNumLevels(),
-                        minesContainer.getMinesNumber());
-                SharedPreferences sharedPref = activity.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
-                float lowest = sharedPref.getFloat("lowestTime", -1);
-                if(status.hasUserWon() && (lowest == -1 || lowest > diff)){
-                    sharedPref.edit().putFloat("lowestTime", (float)diff).commit();
-                    message.append(getResources().getString(R.string.new_record));
-                }
-                if(lowest != -1){
-                    message.append(getResources().getString(R.string.last_record, lowest));
-                }
-
-                dlgAlert.setMessage(message.toString());
-                dlgAlert.setTitle(getResources().getString(R.string.game_over));
-                dlgAlert.create().show();
-            }
-        });
-
-        minesContainer = LoadedGame.minesContainer;
-
-        grid = new Grid(minesContainer, gameStatus);
-        switchButton = new SwitchButton(gameStatus);
-        statusLabel = new StatusLabel(context, minesContainer, gameStatus);
-
-        drawable = new Vector<>();
-        drawable.add(grid);
-        drawable.add(switchButton);
-        drawable.add(statusLabel);
-
-        detector = new GestureDetector(this.getContext(), new GestureDetector.SimpleOnGestureListener(){
-            @Override
-            public boolean onDown(MotionEvent e) {
-                for(IDrawable iDrawable : drawable){
-                    iDrawable.sendTap(Utils.fToI(e.getX()), Utils.fToI(e.getY()));
-                };
+            public boolean onDown(MotionEvent event) {
+                switchButton.sendTap((int) event.getX(), (int) event.getY());
+                redrawInteraction();
                 return true;
             }
 
             @Override
-            public void onLongPress(MotionEvent e) {
-                for(IDrawable iDrawable : drawable){
-                    iDrawable.sendLongTap(Utils.fToI(e.getX()), Utils.fToI(e.getY()));
-                };
+            public void onLongPress(MotionEvent event) {
+                grid.sendLongTap((int) event.getX(), (int) event.getY());
+                redrawInteraction();
             }
 
             @Override
-            public boolean onDoubleTap(MotionEvent e) {
-                for(IDrawable iDrawable : drawable){
-                    iDrawable.sendDoubleTap(Utils.fToI(e.getX()), Utils.fToI(e.getY()));
-                };
+            public boolean onDoubleTap(MotionEvent event) {
+                grid.sendDoubleTap((int) event.getX(), (int) event.getY());
+                redrawInteraction();
                 return true;
             }
-
         });
-
-        handler = new android.os.Handler();
-        refreshRunnable = new Runnable() {
-            @Override
-            public void run() {
-                postInvalidate();
-                handler.postDelayed(refreshRunnable, 17);
-            }
-        };
-        handler.postDelayed(refreshRunnable, 17);
     }
 
-    private void doFinalize() {
-        Activity activity = (Activity)getContext();
-        activity.finish();
+    void setActive(boolean active) {
+        this.active = active;
+        removeCallbacks(refresh);
+        if (active) invalidate();
+        else {
+            long now = SystemClock.uptimeMillis();
+            MotionEvent cancel = MotionEvent.obtain(now, now, MotionEvent.ACTION_CANCEL, 0, 0, 0);
+            detector.onTouchEvent(cancel);
+            cancel.recycle();
+        }
+    }
+
+    private void redrawInteraction() {
+        animateUntil = SystemClock.uptimeMillis() + 220;
+        invalidate();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return detector.onTouchEvent(event);
+        return active && game.status.stillPlaying() && detector.onTouchEvent(event);
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        setActive(false);
+        super.onDetachedFromWindow();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
         canvas.drawColor(Color.BLACK);
-        for(IDrawable iDrawable : drawable){
-            iDrawable.draw(canvas);
-        };
+        grid.draw(canvas);
+        switchButton.draw(canvas);
+        statusLabel.draw(canvas);
 
+        removeCallbacks(refresh);
+        if (active) {
+            if (SystemClock.uptimeMillis() < animateUntil) postDelayed(refresh, 16);
+            else if (game.status.stillPlaying()) {
+                postDelayed(refresh, 1000 - game.status.elapsedMillis() % 1000);
+            }
+        }
     }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
-        MinesLayoutComputor layout = new MinesLayoutComputor(h, w);
-
-        grid.setPosition(layout.getGridX(), layout.getGridWidth(), layout.getGridY(), layout.getGridHeight());
-        switchButton.setPosition(layout.getButtonX(), layout.getButtonWidth(), layout.getButtonY(), layout.getButtonHeight());
-        statusLabel.setPosition(layout.getStatusLabelX(),0,  layout.getStatusLabelY(), layout.getStatusHeight());
+        DisplayMetrics metrics = getResources().getDisplayMetrics();
+        int gap = Math.round(12 * metrics.density);
+        int controlSize = Math.round(48 * metrics.density);
+        float textSize = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, metrics);
+        int lineHeight = (int) Math.ceil(textSize * 1.35);
+        MinesLayoutComputor layout = new MinesLayoutComputor(w, h, gap, controlSize, lineHeight);
+        grid.setPosition(layout.gridX, layout.gridSize, layout.gridY, layout.gridSize);
+        switchButton.setMetrics(layout.landscape, textSize);
+        switchButton.setPosition(layout.buttonX, layout.buttonWidth, layout.buttonY, layout.buttonHeight);
+        statusLabel.setPosition(layout.statusX, layout.statusY, lineHeight, textSize);
     }
 }

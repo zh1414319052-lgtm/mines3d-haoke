@@ -1,0 +1,48 @@
+{
+  "fps": 24,
+  "frames": 576,
+  "duration_seconds": 24,
+  "explosion_frame": 337,
+  "explosion_seconds": 14.0,
+  "coordinates": {
+    "column": 4,
+    "row": 1,
+    "layer": 0,
+    "blender_xyz": [
+      2,
+      -1,
+      0
+    ]
+  },
+  "events": [
+    [
+      "layer.wav",
+      4.8
+    ],
+    [
+      "select.wav",
+      7.0
+    ],
+    [
+      "open.wav",
+      8.0
+    ],
+    [
+      "select.wav",
+      10.0
+    ],
+    [
+      "flag.wav",
+      10.4
+    ],
+    [
+      "select.wav",
+      13.0
+    ]
+  ],
+  "audio_format": "48 kHz / 24-bit PCM stereo",
+  "audio_source": "Original procedural synthesis in scripts/make_sources.py; no third-party samples",
+  "texture_source": "Original deterministic procedural generation",
+  "font": "Noto Sans SC and Noto Sans, SIL Open Font License 1.1",
+  "timing": "Video frame 1 corresponds to t=0; blast occurs on frame 337 / t=14.000s"
+}

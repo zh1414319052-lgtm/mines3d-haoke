@@ -1,19 +1,33 @@
 apply plugin: 'com.android.application'
 
 android {
+    buildFeatures { buildConfig true }
     compileSdk 36
     defaultConfig {
         applicationId "cos.premy.mines"
         minSdkVersion 19
         targetSdkVersion 36
-        versionCode 16
-        versionName '1.7.1'
+        versionCode 20
+        versionName '1.7.1-haoke.1'
         namespace 'cos.premy.mines'
+        // Upstream translations remain in source; this edition uses the primary-language contract.
+        resourceConfigurations += ['en', 'zh']
+        testInstrumentationRunner 'cos.premy.mines.ResourceChecks'
     }
     buildTypes {
+        debug {
+            applicationIdSuffix '.qa'
+            versionNameSuffix '-qa'
+        }
         release {
+            applicationIdSuffix '.haoke'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    bundle {
+        language {
+            enableSplit = false
         }
     }
     testOptions {
@@ -26,6 +40,8 @@ android {
 }
 
 dependencies {
+    implementation 'net.i2p.crypto:eddsa:0.3.0'
+    testImplementation 'org.json:json:20240303'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support.constraint:constraint-layout:2.0.4'

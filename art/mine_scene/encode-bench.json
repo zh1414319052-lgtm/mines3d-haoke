@@ -1,0 +1,74 @@
+{
+  "goal": "quality",
+  "reference": "D:\\浩科软件优化\\三维扫雷_Mines3D\\源码\\art\\mine_scene\\review\\blast_reference.mkv",
+  "seconds": null,
+  "crf": 10,
+  "fps": "24/1",
+  "max_mbps": null,
+  "rule": "画质最高：x264 veryslow 各 tune 比较，排序 VMAF 1%低→PSNR-Y→VMAF 均值；硬件编码器须同体积三项不低于才选",
+  "recommend": "x264-veryslow-film-crf10",
+  "recommend_args": [
+    "-c:v",
+    "libx264",
+    "-preset",
+    "veryslow",
+    "-tune",
+    "film",
+    "-crf",
+    "10"
+  ],
+  "baseline": "x264-veryslow-film-crf10",
+  "results": [
+    {
+      "name": "x264-veryslow-film-crf10",
+      "status": "ok",
+      "encode_s": 12.5,
+      "bytes": 2819631,
+      "mbps": 4.5,
+      "vmaf_mean": 97.552,
+      "vmaf_p1": 96.986,
+      "vmaf_min": 96.986,
+      "psnr_y": 55.244,
+      "frames": 120,
+      "args": [
+        "-c:v",
+        "libx264",
+        "-preset",
+        "veryslow",
+        "-tune",
+        "film",
+        "-crf",
+        "10"
+      ],
+      "passes": true
+    },
+    {
+      "name": "x264-veryslow-animation-crf10",
+      "status": "ok",
+      "encode_s": 11.9,
+      "bytes": 2201097,
+      "mbps": 3.5,
+      "vmaf_mean": 97.386,
+      "vmaf_p1": 96.882,
+      "vmaf_min": 96.882,
+      "psnr_y": 55.897,
+      "frames": 120,
+      "args": [
+        "-c:v",
+        "libx264",
+        "-preset",
+        "veryslow",
+        "-tune",
+        "animation",
+        "-crf",
+        "10"
+      ],
+      "passes": false
+    }
+  ],
+  "machine": {
+    "cpu_threads": 12,
+    "platform": "win32"
+  },
+  "reference_sha256": "218bf0d817b3543df8d776e3d5b920ec956552398deb6a18a7d68ec6f9a7fff7"
+}

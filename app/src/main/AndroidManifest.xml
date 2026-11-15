@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cos.premy.mines">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:glEsVersion="0x00020000" android:required="false" />
 
     <application
         android:allowBackup="true"
@@ -18,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".graphics.GameActivity" />
+        <activity android:name=".online.OnlineActivity" android:exported="false" />
         <activity
             android:name=".OptionActivity"
             android:label="@string/title_activity_option"

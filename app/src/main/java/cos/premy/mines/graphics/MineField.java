@@ -18,7 +18,6 @@ import cos.premy.mines.graphics.animations.Point;
  */
 
 public class MineField extends AbstractDrawable {
-    private final Grid grid;
     private final Mine data;
     private MineField previousMineField;
 
@@ -84,9 +83,8 @@ public class MineField extends AbstractDrawable {
 
     }
 
-    public MineField(Grid grid, Mine data, GameStatus status, final int level){
+    public MineField(Mine data, GameStatus status, final int level){
         super(status);
-        this.grid = grid;
         this.data = data;
         colored = status.getColored();
         numberType = status.getNumberType();
@@ -307,29 +305,14 @@ public class MineField extends AbstractDrawable {
 
 
     @Override
-    protected void sendVerifiedLongTap(int x, int y) {
-        switch (data.getStatus()) {
-            case UNBLOCKED:
-                data.setGameStatus(MineStatus.BLOCKED, gameStatus);
-                break;
-            case BLOCKED:
-                data.setGameStatus(MineStatus.UNBLOCKED, gameStatus);
-                break;
-        }
-        refreshLines();
-        refreshAnimations();
-    }
+    protected void sendVerifiedLongTap(int x, int y) {}
 
     @Override
-    protected void sendVerifiedDoubleTap(int x, int y) {
-        if (data.getStatus() == MineStatus.UNBLOCKED) {
-            data.setGameStatus(MineStatus.OPENED, gameStatus);
-            refreshLines();
-            refreshAnimations();
-            if (gameStatus.getFlood() && (data.getNeighbors() == 0)) {
-                grid.autoFlood(data.getAllNeighborCoords());
-            }
-        }
+    protected void sendVerifiedDoubleTap(int x, int y) {}
+
+    void refreshAppearance() {
+        refreshLines();
+        refreshAnimations();
     }
 
     public void setPreviousMineField(MineField previousMineField){

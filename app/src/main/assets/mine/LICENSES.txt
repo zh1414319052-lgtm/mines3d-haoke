@@ -1,0 +1,3 @@
+Mines3D mine scene and sound effects: original procedural project assets.
+Source: art/mine_scene, with editable Blender scene and generation scripts.
+Fonts: Noto Sans / Noto Sans SC, SIL Open Font License 1.1; license files included.

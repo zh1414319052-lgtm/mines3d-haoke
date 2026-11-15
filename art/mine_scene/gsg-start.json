@@ -1,0 +1,16 @@
+{
+  "changes_software_source": false,
+  "task": "Blender矿井棋盘、踩雷爆炸、原创音效和24秒有声样片第一阶段",
+  "max_skills": 2,
+  "task_type": "game-art-blender",
+  "environment": {
+    "renderer": "Blender",
+    "platform": "Windows"
+  },
+  "requested_skills": [
+    "game-dev-workflow",
+    "video-render-quality"
+  ],
+  "category": "game-development",
+  "project": "D:\\浩科软件优化\\三维扫雷_Mines3D\\源码"
+}

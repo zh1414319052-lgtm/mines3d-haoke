@@ -1,0 +1,20 @@
+<resources>
+    <item name="resume_game" type="id"/>
+    <item name="board_hint" type="id"/>
+    <item name="board_scan" type="id"/>
+    <item name="board_objective" type="id"/>
+    <item name="option_sound" type="id"/>
+    <item name="option_reduced" type="id"/>
+    <item type="id" name="board_viewport" />
+    <item type="id" name="board_previous" />
+    <item type="id" name="board_next" />
+    <item type="id" name="board_layer" />
+    <item type="id" name="board_overview" />
+    <item type="id" name="board_focus" />
+    <item type="id" name="board_reset" />
+    <item type="id" name="board_time" />
+    <item type="id" name="board_flags" />
+    <item type="id" name="board_selected" />
+    <item type="id" name="board_open" />
+    <item type="id" name="board_flag" />
+</resources>
