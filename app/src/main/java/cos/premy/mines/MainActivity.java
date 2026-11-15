@@ -32,6 +32,7 @@ public class MainActivity extends LocalizedActivity {
         Bundle saved=SessionStore.read(this);
         Button online=MineTheme.button(this,t("联机探矿 · 2–6 人","Online expedition · 2–6 players"),true);
         online.setOnClickListener(v->startActivity(new Intent(this,cos.premy.mines.online.OnlineActivity.class)));add(online,18);
+        GameCommunity.addButtons(this,column);
         if(saved!=null){Button resume=MineTheme.button(this,t("继续上次对局","Continue expedition"),true);resume.setId(R.id.resume_game);resume.setOnClickListener(v->startActivity(new Intent(this,GameActivity.class).putExtra("resumeSession",true)));add(resume,18);}
         card("classic",t("熟悉的规则，全新的立体矿井。","The original rules, with a new sense of depth."),()->chooseSize("classic"));
         card("escape",t("打开安全路线，从入口抵达最底层出口。","Connect the entrance to the deepest exit."),()->chooseLevel("escape"));

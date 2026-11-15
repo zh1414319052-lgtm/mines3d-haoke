@@ -1,10 +1,10 @@
 {
-  "version": "1.7.1-haoke.1",
-  "versionCode": 20,
+  "version": "1.7.1-haoke.2",
+  "versionCode": 21,
   "applicationId": "cos.premy.mines.haoke",
   "certificateSha256": "e1d81e7ee6b53804eb9f9a7d1444882a105aa07e67ccb396019a20aa5d644a7e",
-  "bytes": 14878969,
-  "apkSha256": "ccfa273575f4156c09f0d8cc28113533a308762a1a08f307564388e5a651c4d1",
+  "bytes": 14883065,
+  "apkSha256": "a491027d5953d2186b2cae5c102bac4d905cad30ff5219b522fb7fe35358d577",
   "debuggable": false,
   "minSdk": 19
 }

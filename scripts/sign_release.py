@@ -11,7 +11,7 @@ SIGNROOT=Path(os.environ['LOCALAPPDATA'])/'Haoke/AndroidSigning'
 IDENTITY=SIGNROOT/'mines3d-release'
 SDK=Path(os.environ['ANDROID_HOME'])/'build-tools/36.0.0'
 KEYTOOL=Path(os.environ['JAVA_HOME'])/'bin/keytool.exe'
-OUTPUT=ROOT.parent/'三维扫雷_矿井联机_1.7.1-haoke.1_Android.apk'
+OUTPUT=ROOT.parent/'三维扫雷_矿井联机_1.7.1-haoke.2_Android.apk'
 
 def run(args,env=None):
     p=subprocess.run([str(x) for x in args],env=env,cwd=ROOT,capture_output=True,timeout=120)
@@ -64,7 +64,7 @@ def main(create=False):
         # aapt/zipalign on Windows cannot reliably open non-ASCII absolute paths.
         unsigned=Path('app/build/outputs/apk/release/app-release-unsigned.apk')
         badging=run([SDK/'aapt.exe','dump','badging',unsigned]).decode('utf8')
-        assert "package: name='cos.premy.mines.haoke' versionCode='20' versionName='1.7.1-haoke.1'" in badging
+        assert "package: name='cos.premy.mines.haoke' versionCode='21' versionName='1.7.1-haoke.2'" in badging
         assert 'application-debuggable' not in badging
         run([SDK/'zipalign.exe','-c','-P','16','4',unsigned])
         run([SDK/'apksigner.bat','sign','--ks',store,'--ks-key-alias',ALIAS,'--ks-pass','env:MINES_STORE_PASS',
@@ -72,7 +72,7 @@ def main(create=False):
             '--v3-signing-enabled','true','--v4-signing-enabled','false','--out',OUTPUT,unsigned],env)
         verified=run([SDK/'apksigner.bat','verify','--verbose','--print-certs',OUTPUT]).decode('utf8')
         assert meta['certificateSha256'] in verified.lower()
-        result={'version':'1.7.1-haoke.1','versionCode':20,'applicationId':APP,'certificateSha256':sha(der),
+        result={'version':'1.7.1-haoke.2','versionCode':21,'applicationId':APP,'certificateSha256':sha(der),
             'bytes':OUTPUT.stat().st_size,'apkSha256':sha(OUTPUT.read_bytes()),'debuggable':False,'minSdk':19}
         write(ROOT/'docs/release/package.json',result)
         (ROOT/'docs/release/apk-signature.txt').write_text(verified,encoding='utf8')

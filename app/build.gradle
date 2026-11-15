@@ -7,8 +7,8 @@ android {
         applicationId "cos.premy.mines"
         minSdkVersion 19
         targetSdkVersion 36
-        versionCode 20
-        versionName '1.7.1-haoke.1'
+        versionCode 21
+        versionName '1.7.1-haoke.2'
         namespace 'cos.premy.mines'
         // Upstream translations remain in source; this edition uses the primary-language contract.
         resourceConfigurations += ['en', 'zh']

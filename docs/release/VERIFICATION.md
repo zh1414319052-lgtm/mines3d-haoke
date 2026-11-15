@@ -1,21 +1,18 @@
-# Formal build 20 verification — 2026-11-15
+# Build 21 verification — 2026-11-15
 
-The owner explicitly stopped further gameplay/device testing and chose personal acceptance. This scope remains in force for the formal package; no formal device installation, device upgrade or game-session pass is claimed.
+The owner explicitly retains responsibility for device/gameplay acceptance. No phone or emulator was operated for this release.
 
-This release passed the native signed-update module's 28 JVM checks, covering real exact-byte signature interoperability, tampering, unknown key/schema, expiry, replay, product/channel/certificate identity, compatibility, storage, simultaneous/manual checks, cancellation, reminders and bounded retry policy. A separate test passed against the newly registered Mines3D stable `none` feed using the compiled trust pin and rejected QA/foreign identities. The test fixture's historical validation time is intentional. Release compilation and Android lint passed (zero errors, existing warnings retained). The final artifact was inspected for package/build/minSdk, non-debuggable status, zip alignment and v1/v2/v3 release signatures.
+Passed in this revision:
 
-The new icon has a preserved RGBA master, density PNGs, round PNGs and adaptive layers. It was visually inspected as an asset; actual launcher masks on physical devices remain untested. Simplified Chinese and English update/About strings follow the existing first-system-language selector. Device language switching, dialog appearance and update lifecycle on a physical phone were not rerun.
+- assembleRelease and lintRelease: zero errors, 58 warnings.
+- APK application ID cos.premy.mines.haoke, version 1.7.1-haoke.2 / 21, minSdk 19; non-debuggable, zipalign and v1/v2/v3 release signatures.
+- Certificate exactly matches formal build 20, allowing a normal signed upgrade without intentionally clearing data.
+- Final DEX contains both requested Chinese login texts, English equivalents, QQ group 1841958554 and the exact owner-provided common URL. The old password placeholder is absent.
+- Shared community helper is called from Home and the online lobby; account/session, game, server and room logic were not changed.
+- Shared integration skill frontmatter validation and 21 isolated tool tests passed. New cases cover user-supplied external/common URLs, missing URLs, legacy configurations and no implicit installer upload.
 
-Historical QA.5 evidence, not a claim about formal-package device tests:
+Not runtime-verified: visual layout and keyboard/locale behavior, Android share sheet/copy/browser fallback, installed/missing QQ and QQ-version-specific group card navigation, return-to-game behavior, physical upgrade/data retention, weak-network matches and performance. The QQ URI launches the standard QQ package; players can always use the visible copy-group option if QQ does not support the card action. No automatic sharing or joining is performed.
 
-- 32 game JVM tests and lint passed before the user stopped testing.
-- 107 isolated backend tests passed locally and on the target Linux host.
-- One physical phone plus one emulator completed the cooperating room/game/result/restart path, pinch/pan, scan/mark confirmation, rescue, background/resume and host transfer.
-- The phone's maximum 15×15×8 board checks passed for corners, inner decks and camera actions without board mutation.
-- The emulator plus protocol companions exercised legitimate results in the additional multiplayer modes with 2–6 participants. This was not six physical phones.
-- The final QA solo flow runner passed its six modes and maximum-board checks.
-- A phone stress run was interrupted around nine minutes by a system overlay at low battery. This is not a completed 10–15 minute soak and the recorded GL callback rate is not measured presentation FPS.
+Historical evidence only: build 20 passed 28 updater JVM checks plus one product feed check; QA.5 passed 32 game JVM checks and 107 backend checks, one physical phone plus emulator cooperation, maximum-board checks and companion-client mode completions. A low-battery phone run stopped around nine minutes and is not a completed 10–15 minute soak. Public two-device full-round, six physical devices, low-end and load testing remain unverified.
 
-Not verified: a complete public-network two-device match after deployment, six physical devices, weak-network/load limits, low-end phone performance, formal-device installation/upgrade/update UI and a completed sustained phone stress run. The server and protocol are retained; production availability checks do not substitute for those gameplay checks.
-
-Publication readback: the stable feed is published at revision 1 and verified with the pinned Ed25519 key; product, channel, build, expiry, certificate, size and APK hash match the final release. The public APK was downloaded completely and matched the local file byte hash. GitHub's release source asset digest matched the local archive, and the maintained default branch/README and release tag were read back. The website requires notification minSdk 21; APK minSdk remains 19, explicitly documented as a notification audience restriction.
+Distribution uses the exact owner-provided download/share URL: https://www.haoke.org/software/491ec4cb67f1146b?platform=android . No APK is uploaded to the game site or GitHub. Original user-managed cloud links remain; the owner handles their files. Signed-notification audience remains API 21+, while the APK remains API 19+.

@@ -1,16 +1,20 @@
-# 三维扫雷 · Mines3D Deep Sector · 1.7.1-haoke.1
+# 三维扫雷 · Mines3D Deep Sector · 1.7.1-haoke.2
 
 [正式版介绍与下载 / Download](https://www.haoke.org/software/491ec4cb67f1146b) · [联机游戏平台 / Online platform](https://cleanbizai.com/games/mines3d)
 
 ![Mines3D](art/launcher/mines3d-icon-512.png)
 
-Android 正式版，build 20。立体矿井、原创爆炸与音效、六种单机模式，以及 2–6 人合作探矿、猎雷淘汰、团队无猜、断层、每日同图和同图竞速；六人还能玩 3v3 撤离。单指旋转，双指缩放和平移，切换当前层点选。新矿井图标与中英文设置/签名更新入口已接入。
+本次更新：密码框显示“请输入密码”，下方注明“登录后保持登录状态”。首页和联机大厅新增分享游戏、加入 QQ 群 1841958554；支持系统分享、复制链接和 QQ 不可用时复制群号。下载与分享共用用户提供的 https://www.haoke.org/software/491ec4cb67f1146b?platform=android ，安装包只在本地交付，未上传游戏网站。
+
+This update clarifies the password placeholder and persistent sign-in, and adds Share game / Join QQ group 1841958554 to Home and the online lobby. System sharing and clipboard fallbacks use the owner-provided link above. Login/session behavior and the signing certificate are unchanged; the APK is delivered locally, not uploaded to the game site.
+
+Android 正式版，build 21。立体矿井、原创爆炸与音效、六种单机模式，以及 2–6 人合作探矿、猎雷淘汰、团队无猜、断层、每日同图和同图竞速；六人还能玩 3v3 撤离。单指旋转，双指缩放和平移，切换当前层点选。新矿井图标与中英文设置/签名更新入口已接入。
 
 Based on Mines3D 1.7.1 by Přemysl Šťastný and contributors, upstream baseline `535b3e547585aca7c10443fd0ce0ea84961ea7c5`. [Upstream](https://github.com/stastnypremysl/Mines3D). GPL-3.0-only, with original attribution retained. Modified through 2026-11-15.
 
 This Android edition adds a real rotatable mine, original effects/audio, six solo modes, 2–6 player online cooperation and competition, and six-player 3v3. Online play uses the existing Haoke game account. The formal package is independent of upstream and QA installations; sign in again, and keep in mind that private local saves do not migrate automatically.
 
-Package `cos.premy.mines.haoke`; version `1.7.1-haoke.1` / 20; Android 4.4+ (API 19), target 36. APK: **14,878,969 bytes**. SHA-256: `ccfa273575f4156c09f0d8cc28113533a308762a1a08f307564388e5a651c4d1`. Release certificate SHA-256: `e1d81e7ee6b53804eb9f9a7d1444882a105aa07e67ccb396019a20aa5d644a7e`.
+Package `cos.premy.mines.haoke`; version `1.7.1-haoke.2` / 21; Android 4.4+ (API 19), target 36. APK: **14,883,065 bytes**. SHA-256: `a491027d5953d2186b2cae5c102bac4d905cad30ff5219b522fb7fe35358d577`. Release certificate SHA-256: `e1d81e7ee6b53804eb9f9a7d1444882a105aa07e67ccb396019a20aa5d644a7e`.
 
 安装包保持 Android 4.4+；网站的更新通知接口覆盖 Android 5.0+，4.4 用户可手动从网站下载。The APK supports Android 4.4+; the website's update notification policy covers Android 5.0+.
 
@@ -77,7 +81,7 @@ The Gradle release output is unsigned; the publisher's private signing key is de
 
 ## 实际验证 / Verification
 
-[Detailed scope and limits](docs/release/VERIFICATION.md). Formal release compilation, lint and signature/package checks passed. The 28 native updater checks plus one real Mines3D feed check passed. Prior QA.5 included 32 game JVM checks, 107 isolated backend checks, one phone plus one emulator cooperation, maximum-board checks and companion-client mode checks.
+[Detailed scope and limits](docs/release/VERIFICATION.md). Build 21 compilation, lint and signature/package checks passed, including the packaged bilingual copy and owner-provided links. The 28 updater checks and one feed check passed previously in build 20 and were not rerun for these UI additions. Prior QA.5 included 32 game JVM checks, 107 isolated backend checks, one phone plus one emulator cooperation, maximum-board checks and companion-client mode checks.
 
 用户已明确选择自行完成剩余测试，本轮未重新运行游戏或真机测试。正式包真机安装/升级/更新界面、部署后公网双端完整对局、六台真机、弱网/负载、低端手机及完整 10–15 分钟真机长测未验证。Historical QA evidence is not a formal-device pass; those acceptance items remain unverified.
 

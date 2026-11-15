@@ -2,9 +2,9 @@
 from pathlib import Path
 import hashlib,json,shutil,zipfile,re,subprocess
 ROOT=Path(__file__).resolve().parents[1]
-PLATFORM=ROOT.parents[1]/'新软件/浩科游戏中心'
+PLATFORM=ROOT/'platform/haoke-game-platform'
 OUT=ROOT/'build/formal-source'
-ZIP=ROOT/'build/mines3d-1.7.1-haoke.1-source.zip'
+ZIP=ROOT/'build/mines3d-1.7.1-haoke.2-source.zip'
 SKIP={'.git','.gradle','build','__pycache__','renders','review','work','compressed-images','.pytest_cache','node_modules','.idea'}
 DENY_NAMES={'local.properties','render_cache.json','render_progress.json','movie.ffconcat','intro_preview.ffconcat','reference.ffconcat'}
 SCRIPTS={'build_launcher.ps1','sign_release.py','package_formal_source.py'}

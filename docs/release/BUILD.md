@@ -2,7 +2,7 @@
 
 Android: JDK 21, Android SDK 36, Gradle wrapper 8.13 and Android Gradle Plugin 8.13.2. Set `JAVA_HOME` and `ANDROID_HOME`, then run `gradlew assembleRelease`. The release APK is unsigned until signed with the owner's external keystore. `assembleDebug` creates a separate QA package and can use a developer's own debug key. Windows tools can require an ASCII drive mapping for a source directory containing Chinese characters.
 
-Stable identity: `cos.premy.mines.haoke`, version `1.7.1-haoke.1`, build 20. Namespace remains `cos.premy.mines`. QA and upstream installations are separate; no private data is automatically migrated. Log in with the existing platform account. The formal binary uses https://cleanbizai.com and protocol 1, with no debug server override.
+Stable identity: `cos.premy.mines.haoke`, version `1.7.1-haoke.2`, build 21. Namespace remains `cos.premy.mines`. QA and upstream installations are separate; no private data is automatically migrated. Log in with the existing platform account. The formal binary uses https://cleanbizai.com and protocol 1, with no debug server override.
 
 `scripts/sign_release.py` signs this version using the established product keystore under `%LOCALAPPDATA%/Haoke/AndroidSigning/mines3d-release/`. `--create` was explicitly authorized for the first identity on 2026-11-15 and must never be used to replace it. Passwords are read only in memory from the existing Windows DPAPI-protected reference. The public certificate is in this folder; the private key and credential stores are never distributed. Future signing must retain the exact certificate. No backup was created because the owner requires separate permission before backup.
 
@@ -15,3 +15,5 @@ Publication compatibility note: the website enforces API 21 as the minimum updat
 Assets: editable Blender scene, texture inputs, mesh/animation export recipes, original audio tracks/scripts and the new icon master are under `art/`. Runtime exports stay under `app/src/main/assets/`. Noto Sans / Noto Sans SC fonts retain SIL OFL 1.1. The retained stage-one sample is an artistic reference, not a runtime recording.
 
 The matching platform source is under `platform/haoke-game-platform` in the published source. It uses Python/FastAPI/SQLite and React/Vite. Run `npm ci` and `npm run build` in its frontend; install its `requirements.txt` for the backend. Configure your own documented environment and accounts; production `.env`, user database, signing identities and credentials are intentionally absent. Preserve existing production data during deployment. Run one backend worker because room coordination is process-local. Backend migration 7 adds Mines3D tables idempotently.
+
+Build 21 adds bilingual password guidance and player-initiated share/QQ controls. GameCommunity.java contains the exact owner-provided download/share URL and group number. No installer is uploaded to the game website; signing and session storage are unchanged.
