@@ -12,6 +12,8 @@ This Android edition adds a real rotatable mine, original effects/audio, six sol
 
 Package `cos.premy.mines.haoke`; version `1.7.1-haoke.1` / 20; Android 4.4+ (API 19), target 36. APK: **14,878,969 bytes**. SHA-256: `ccfa273575f4156c09f0d8cc28113533a308762a1a08f307564388e5a651c4d1`. Release certificate SHA-256: `e1d81e7ee6b53804eb9f9a7d1444882a105aa07e67ccb396019a20aa5d644a7e`.
 
+安装包保持 Android 4.4+；网站的更新通知接口覆盖 Android 5.0+，4.4 用户可手动从网站下载。The APK supports Android 4.4+; the website's update notification policy covers Android 5.0+.
+
 ## 游玩
 
 首页有六个独立模式：经典扫雷、矿井撤离、无猜解谜、断层矿井、有限扫描、每日同图。

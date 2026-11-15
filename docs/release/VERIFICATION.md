@@ -17,3 +17,5 @@ Historical QA.5 evidence, not a claim about formal-package device tests:
 - A phone stress run was interrupted around nine minutes by a system overlay at low battery. This is not a completed 10–15 minute soak and the recorded GL callback rate is not measured presentation FPS.
 
 Not verified: a complete public-network two-device match after deployment, six physical devices, weak-network/load limits, low-end phone performance, formal-device installation/upgrade/update UI and a completed sustained phone stress run. The server and protocol are retained; production availability checks do not substitute for those gameplay checks.
+
+Publication readback: the stable feed is published at revision 1 and verified with the pinned Ed25519 key; product, channel, build, expiry, certificate, size and APK hash match the final release. The public APK was downloaded completely and matched the local file byte hash. GitHub's release source asset digest matched the local archive, and the maintained default branch/README and release tag were read back. The website requires notification minSdk 21; APK minSdk remains 19, explicitly documented as a notification audience restriction.
